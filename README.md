@@ -21,13 +21,12 @@ cargo +nightly build --target x86_64-unknown-linux-gnu
 ```
 
 ## Results
+On both Windows\Linux, you can see that all debug strings have been removed only leaving strings that are used in your source or required strings like imported module names or some std errors.
 
 ### Windows
 Binary size : 32,768 bytes
 
 Strings :
-
-The first string is contains the ones use in main.rs followed by a few strings for errors and module dependencies.
 ![IDA strings Windows](doc/windows_strings.PNG)
 
 ### Linux
