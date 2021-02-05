@@ -5,10 +5,8 @@ rustflags = [
     
     # Link Args
     # /EMITPHOPHASEINFO     Removes the .debug segment
-    # /DEBUG:NONE           Do not include PDB path in binary or generate PDB
     # /MERGE                Combine segments with similar permissions
-    # /MANIFEST:NO          Dont generate any manifest file
-    "-C", "link-args=/EMITPOGOPHASEINFO /DEBUG:NONE /MERGE:.pdata=.text /MERGE:.rdata=.text /MANIFEST:NO"
+    "-C", "link-args=/EMITPOGOPHASEINFO /MERGE:.pdata=.text /MERGE:.rdata=.text"
 ]
 
 [profile.release]

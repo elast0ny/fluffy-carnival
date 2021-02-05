@@ -14,7 +14,7 @@ In order to build, simply use cargo with the nightly toolchain :
 # Release
 # The --target argument MUST be provided when building std
 # panic_immediate_abort disables any error message printing on panic. This removes all unused strings and filepaths.
-cargo +nightly -Zbuild-std-features=panic_immediate_abort build --target x86_64-unknown-linux-gnu --release
+cargo +nightly -Zbuild-std-features=panic_immediate_abort build --release --target x86_64-unknown-linux-gnu
 
 # Debug with nice messages and unwind
 cargo +nightly build --target x86_64-unknown-linux-gnu
@@ -24,11 +24,13 @@ cargo +nightly build --target x86_64-unknown-linux-gnu
 
 ### Windows
 Binary size : 32,768 bytes
+
 Strings :
 The first string is contains the ones use in main.rs followed by a few strings for errors and module dependencies.
 ![IDA strings Windows](doc/windows_strings.PNG)
 
 ### Linux
 Binary size : 38,992 bytes
+
 Strings :
 ![IDA strings Linux](doc/linux_strings.PNG)
