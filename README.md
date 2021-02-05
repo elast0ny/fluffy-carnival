@@ -12,7 +12,14 @@ rustup +nightly component add rust-src
 In order to build, simply use cargo with the nightly toolchain :
 ```bash
 # The --target argument MUST be provided when building std
-cargo +nightly run --target [x86_64-pc-windows-msvc|x86_64-unknown-linux-gnu] --release
+cargo +nightly build --target [x86_64-pc-windows-msvc|x86_64-unknown-linux-gnu] --release
+
+# Example windows output. Because windows does not have abort(), the panic simply generates an invalid instruction exception
+$ target/x86_64-pc-windows-msvc/release/std_tests
+Illegal instruction
+
+# Example linux output.
+TODO
 ```
 
 ## Results
