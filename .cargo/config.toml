@@ -1,4 +1,4 @@
-[target.'cfg(all(target_os = "windows", target_env="msvc"))']
+[target.'cfg(all(target_family = "windows", target_env="msvc"))']
 rustflags = [
     # Statically compile the windows C runtime. This increases size but is good for portability
     #"-C", "target-feature=+crt-static",
@@ -17,12 +17,14 @@ opt-level = 'z'
 lto = true
 codegen-units = 1
 panic = 'abort'
+strip = "symbols"
 
 [unstable]
 # Build the panic_abort crate and all of std using our crate's profile settings
-# In most cases, this means that panics will generate either an abort() of an invalid instruction exception
+# Depending on the crate profile `panic` setting, either panic_abort or panic_unwind will be linked in std
 build-std = ["panic_abort", "std"]
 
 # Dont run anything else on panic.
 # This removes any pretty printing of error messages with their location (file paths)
-build-std-features = ["panic_immediate_abort"]
+# This can be provided through the command to allow debug builds to have error messages on panic
+# build-std-features = ["panic_immediate_abort"]

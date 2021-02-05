@@ -11,15 +11,13 @@ rustup +nightly component add rust-src
 ## Build
 In order to build, simply use cargo with the nightly toolchain :
 ```bash
+# Release
 # The --target argument MUST be provided when building std
-cargo +nightly build --target [x86_64-pc-windows-msvc|x86_64-unknown-linux-gnu] --release
+# panic_immediate_abort disables any error message printing on panic. This removes all unused strings and filepaths.
+cargo +nightly -Zbuild-std-features=panic_immediate_abort build --target x86_64-unknown-linux-gnu --release
 
-# Example windows output. Because windows does not have abort(), the panic simply generates an invalid instruction exception
-$ target/x86_64-pc-windows-msvc/release/std_tests
-Illegal instruction
-
-# Example linux output.
-TODO
+# Debug with nice messages and unwind
+cargo +nightly build --target x86_64-unknown-linux-gnu
 ```
 
 ## Results
@@ -31,6 +29,6 @@ The first string is contains the ones use in main.rs followed by a few strings f
 ![IDA strings Windows](doc/windows_strings.PNG)
 
 ### Linux
-Binary size : TODO
+Binary size : 38,992 bytes
 Strings :
-TODO
+![IDA strings Linux](doc/linux_strings.PNG)
