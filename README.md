@@ -26,6 +26,7 @@ cargo +nightly build --target x86_64-unknown-linux-gnu
 Binary size : 32,768 bytes
 
 Strings :
+
 The first string is contains the ones use in main.rs followed by a few strings for errors and module dependencies.
 ![IDA strings Windows](doc/windows_strings.PNG)
 
